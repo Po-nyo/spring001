@@ -12,9 +12,9 @@
 </head>
 <body>
     <p>signUpOk</p>
-    ID : ${memId}<br>
-    PW : ${memPw}<br>
-    Phone : ${memPhone}<br>
+    ID : ${member.memId}<br>
+    PW : ${member.memPw}<br>
+    Phone : ${member.memPhone1}-${member.memPhone2}-${member.memPhone3}<br>
 
     <a href="/resources/html/login.html">로그인</a>
 </body>

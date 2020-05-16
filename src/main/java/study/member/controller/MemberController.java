@@ -6,11 +6,16 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import study.member.Member;
 import study.member.service.MemberService;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 @Controller
 @RequestMapping(value = "/member")
@@ -20,6 +25,14 @@ public class MemberController {
 //	@Resource(name="memService")
 	@Autowired
 	MemberService service;
+
+	@ModelAttribute
+	public String getServerTime(Locale locale) {
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG,locale);
+
+		return dateFormat.format(date);
+	}
 	
 	@RequestMapping(value="/memJoin", method=RequestMethod.POST)
 	public String memJoin(Member member) {
